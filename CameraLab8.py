@@ -48,18 +48,18 @@ if __name__ == "__main__":
         if cmd_listener.get_msg() == "HIGH":
             time.sleep(0.45)
             led_on = camera.get_img()
-            camera.save_img("$HOME/Documents/led_on/photo{}.jpg".format(i))
+            camera.save_img("/home/robot149a/Documents/led_on/photo{}.jpg".format(i))
             while cmd_listener.get_msg() == "HIGH":
                 pass
         if cmd_listener.get_msg() == "LOW":
             time.sleep(0.45)
             led_off = camera.get_img()
-            camera.save_img("$HOME/Documents/led_off/photo{}.jpg".format(i))
+            camera.save_img("/home/robot149a/Documents/led_off/photo{}.jpg".format(i))
             while cmd_listener.get_msg() == "LOW":
                 pass
         if (led_on is not  None and led_off is not None):
             diff = cv2.absdiff(led_on, led_off)
-            cv2.imwrite("$HOME/Documents/led_diff/photo{}.jpg".format(i), diff)
+            cv2.imwrite("/home/robot149a/Documents/led_diff/photo{}.jpg".format(i), diff)
             print(i)
             i+=1
         rate.sleep()
